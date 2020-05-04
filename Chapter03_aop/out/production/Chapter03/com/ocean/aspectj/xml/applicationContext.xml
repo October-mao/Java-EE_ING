@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--    配置目标类-->
+    <bean id="userDao" class="com.ocean.jdk.UserDaoImpl"/>
+<!--    切面-->
+    <bean id="myAspect" class="com.ocean.aspectj.xml.MyAspect"/>
+<!--    AOP编程-->
+    <aop:config>
+<!--        配置切面-->
+        <aop:aspect ref="myAspect">
+<!--            配置切入点，通知最后增强哪些方法-->
+            <aop:pointcut id="myPointCut" expression="execution(* com.ocean.jdk.*.*(..))"/>
+<!--            关联通知Advice和切入点pointcut-->
+<!--            前置通知-->
+            <aop:before method="myBefore" pointcut-ref="myPointCut"/>
+<!--            后置通知，在方法返回之后执行，可以获得返回值，
+                returning属性：用于设置后置通知的第二个参数的名称，类型是Object-->
+            <aop:after-returning method="myAfterReturning" pointcut-ref="myPointCut"/>
+<!--            环绕通知-->
+            <aop:around method="myAround" pointcut-ref="myPointCut"/>
+<!--            抛出通知：用于处理程序发生异常-->
+<!--            注意：如果程序没有异常，将不会执行增强-->
+<!--            throwing属性：用于设置第二个参数的名称，类型Throwable-->
+            <aop:after-throwing method="myAfterThrowing" pointcut-ref="myPointCut" throwing="throwable"/>
+<!--            最终通知：无论程序发生任何事情都将执行-->
+            <aop:after method="myAfter" pointcut-ref="myPointCut"/>
+
+
+        </aop:aspect>
+    </aop:config>
+</beans>

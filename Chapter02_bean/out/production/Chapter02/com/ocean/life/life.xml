@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    scope="singleton"  默认存在，在默认情况下spring全程跟踪bean的生命周期-->
+    <bean id="life" class="com.ocean.life.Life" init-method="initMethod" destroy-method="destroyMethod"/>
+</beans>
