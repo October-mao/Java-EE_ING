@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.Reader;
+
 public class MybatisUtils {
     private static SqlSessionFactory sqlSessionFactory = null;
     //初始化SqlSessionFactory对象

@@ -10,7 +10,6 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-
 /**
  * 入门程序测试类
  */
@@ -35,8 +34,6 @@ public class MybatisTest {
 //        关闭sqlSession
         sqlSession.close();
     }
-
-
     /**
      * 根据用户名称模糊查询用户信息列表
      */
@@ -74,9 +71,9 @@ public class MybatisTest {
 //        4、sqlSession执行映射文件中定义的sql，并返回映射结果
 //        创建customer对象,并添加数据
         Customer customer = new Customer();
-        customer.setUsername("rose");
-        customer.setJobs("student");
-        customer.setPhone("44444444");
+        customer.setUsername("cook");
+        customer.setJobs("cook");
+        customer.setPhone("5555555");
 //        执行SqlSession的插入方法,返回的是sql语句影响的行数
         int rows =sqlSession.insert("com.ocean.po.CustomerMapper.addCustomer",customer);
 //        通过返回结果判断插入操作是否执行成功
@@ -136,7 +133,7 @@ public class MybatisTest {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 //        4、sqlSession执行映射文件中定义的sql，并返回映射结果
 //        执行SqlSession的删除方法,返回的是sql语句影响的行数
-        int rows =sqlSession.delete("com.ocean.po.CustomerMapper.deleteCustomer",4);
+        int rows =sqlSession.delete("com.ocean.po.CustomerMapper.deleteCustomer",5);
 //        通过返回结果判断删除操作是否执行成功
         if (rows > 0){
             System.out.println("您成功删除了"+rows+"条数据!");

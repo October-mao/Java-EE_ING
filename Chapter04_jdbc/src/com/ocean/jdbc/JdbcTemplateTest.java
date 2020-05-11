@@ -86,7 +86,6 @@ public class JdbcTemplateTest {
         Account account = accountDao.findAccountById(1);
         System.out.println(account.toString());
     }
-
     @Test
     public void findAllAccountTest(){
         //加载配置文件
